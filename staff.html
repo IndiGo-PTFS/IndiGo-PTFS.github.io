@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indigo PTFS - Flight Operations</title>
+    <link rel="icon" href="images/image3.png">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="staff.css">
+</head>
+<body>
+ <header>
+        <h1>Indigo PTFS</h1>
+        <div class="subtitle">Flight Control Center</div>
+    </header>
+
+    <div class="container">
+        <button id="discordLoginBtn" onclick="startDiscordAuth()">Login with Discord to Access</button>
+        
+        <button id="createFlightBtn" class="create-btn" onclick="openModal()">+ Create New Flight</button>
+    </div>
+
+    <div id="flightModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="text-align: center; color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); font-size: 1.5rem; letter-spacing: 2px;">FLIGHT DETAILS</h2>
+            
+            <form id="flightForm" onsubmit="sendToDiscord(event)">
+                <div class="form-group">
+                    <label>Flight Number</label>
+                    <input type="text" id="flightNum" placeholder="e.g. 102" required>
+                </div>
+                <div class="form-group">
+                    <label>Host Name</label>
+                    <input type="text" id="hostName" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Departure City</label>
+                    <input type="text" id="depCity" placeholder="e.g. LHR" required>
+                </div>
+                <div class="form-group">
+                    <label>Arrival City</label>
+                    <input type="text" id="arrCity" placeholder="e.g. DXB" required>
+                </div>
+                <div class="form-group">
+                    <label>Departure Time</label>
+                    <input type="time" id="depTime" required>
+                </div>
+                <div class="form-group">
+                    <label>Arrival Time</label>
+                    <input type="time" id="arrTime" required>
+                </div>
+                <div class="form-group">
+                    <label>Gate Number</label>
+                    <input type="text" id="gateNo" placeholder="e.g. A12" required>
+                </div>
+                <div class="form-group">
+                    <label>Aircraft Type</label>
+                    <select id="aircraftType" required>
+                        <option value="Airbus A320neo">Airbus A320neo</option>
+                        <option value="Airbus A321neo">Airbus A321neo</option>
+                        <option value="Boeing 787 Dreamliner">Boeing 787 Dreamliner</option>
+                        <option value="Boeing 777-300ER">Boeing 777-300ER</option>
+                        <option value="ATR 72-600">ATR 72-600</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Publish Flight</button>
+                <div class="loader" id="loader"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="staff.js"></script>
+</body>
+</html>
